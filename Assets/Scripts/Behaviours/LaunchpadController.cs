@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class LaunchpadController : MonoBehaviour
 {
-    [SerializeField] private float speed = 0.5f;
+    [SerializeField] private float speed = 5f;
 
     private Rigidbody2D rigidbody;
     
