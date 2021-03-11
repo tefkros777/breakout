@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BallController : MonoBehaviour
 {
@@ -24,6 +26,21 @@ public class BallController : MonoBehaviour
     void Update()
     {
         dockCheck();
+    }
+
+    public void OnLaunch(InputAction.CallbackContext input)
+    {
+        Debug.Log("Launch");
+        Launch();
+    }
+
+    private void Launch()
+    {
+        if (!isDocked)
+            return;
+        // Raise event here
+        
+        // Launch code/command
     }
 
     private void dockCheck()
