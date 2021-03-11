@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1685018657}
   - component: {fileID: 1685018651}
   - component: {fileID: 1685018652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: launchpad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
