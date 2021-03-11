@@ -19,7 +19,7 @@ public class BallController : MonoBehaviour
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         ballCollider = gameObject.GetComponent<CircleCollider2D>();
-        dockCollider = GameObject.FindGameObjectWithTag("Dock").GetComponent<CapsuleCollider2D>();
+        dockCollider = GameObject.FindGameObjectWithTag("Dock").GetComponent<CapsuleCollider2D>(); // Coupling
         isDocked = false;
     }
 
@@ -43,19 +43,13 @@ public class BallController : MonoBehaviour
         var myVelocity = rigidbody.velocity;
         myVelocity.y = speed;
         rigidbody.velocity = myVelocity;
-
-        Debug.Log("Launch");
-
     }
 
     private void dockCheck()
     {
-        if (ballCollider.IsTouching(dockCollider)){
+        if (ballCollider.IsTouching(dockCollider))
             isDocked = true;
-        }
         else
-        {
             isDocked = false;
-        }
     }
 }
