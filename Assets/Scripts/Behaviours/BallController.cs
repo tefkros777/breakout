@@ -30,7 +30,6 @@ public class BallController : MonoBehaviour
 
     public void OnLaunch(InputAction.CallbackContext input)
     {
-        Debug.Log("Launch");
         Launch();
     }
 
@@ -39,8 +38,14 @@ public class BallController : MonoBehaviour
         if (!isDocked)
             return;
         // Raise event here
-        
+
         // Launch code/command
+        var myVelocity = rigidbody.velocity;
+        myVelocity.y = speed;
+        rigidbody.velocity = myVelocity;
+
+        Debug.Log("Launch");
+
     }
 
     private void dockCheck()
