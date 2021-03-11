@@ -33,5 +33,6 @@ public class LaunchpadController : MonoBehaviour
         rigidbody.velocity = myVelocity;
     }
 
+    // Should also do launching
 
 }

@@ -8,48 +8,39 @@ public class BallController : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+    
+    private static readonly float GRAVITY_OFF = 0;
 
     private Rigidbody2D rigidbody;
     private Collider2D ballCollider;
     private Collider2D dockCollider;
+    private BoxCollider2D[] blockColliders;
 
-    private bool isDocked = false;
 
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
         ballCollider = gameObject.GetComponent<CircleCollider2D>();
-        dockCollider = GameObject.FindGameObjectWithTag("Dock").GetComponent<CapsuleCollider2D>(); // Coupling
-        isDocked = false;
+        dockCollider = FindObjectOfType<CapsuleCollider2D>();
+        blockColliders = FindObjectsOfType<BoxCollider2D>();
     }
-
+    
     void Update()
     {
-        dockCheck();
+        
     }
 
-    public void OnLaunch(InputAction.CallbackContext input)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Launch();
-    }
+        Debug.Log("COLLISION");
 
-    private void Launch()
-    {
-        if (!isDocked)
-            return;
-        // Raise event here
+        // Set gravity off on first collision with the dock
+        rigidbody.gravityScale = GRAVITY_OFF;
+        
+        // At the point of contact velocity is 0, that is the problem
 
-        // Launch code/command
-        var myVelocity = rigidbody.velocity;
-        myVelocity.y = speed;
-        rigidbody.velocity = myVelocity;
-    }
+        // Now just reflect
+        Vector2.Reflect(rigidbody.velocity, collision.GetContact(0).normal);
 
-    private void dockCheck()
-    {
-        if (ballCollider.IsTouching(dockCollider))
-            isDocked = true;
-        else
-            isDocked = false;
     }
 }
