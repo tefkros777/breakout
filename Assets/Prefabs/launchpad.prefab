@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1685018651}
   - component: {fileID: 1685018652}
   m_Layer: 0
-  m_Name: launchpad_sprite
+  m_Name: launchpad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef057cf5b211424cb1c08c2d406dc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 5
 --- !u!114 &1685018652
 MonoBehaviour:
   m_ObjectHideFlags: 0
