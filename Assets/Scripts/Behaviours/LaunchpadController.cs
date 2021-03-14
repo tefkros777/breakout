@@ -7,8 +7,7 @@ public class LaunchpadController : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
 
-    private Rigidbody2D rb;
-    
+    private Rigidbody2D rb;  
     private Vector2 mInputDirection;
 
     private void Awake()
@@ -32,14 +31,4 @@ public class LaunchpadController : MonoBehaviour
         myVelocity.x = direction.x * speed;
         rb.velocity = myVelocity;
     }
-
-/*    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        var inDirection = this.rigidbody.velocity;
-        var inNormal = collision.gameObject.GetComponent<Collider2D>().ClosestPoint(transform.position);
-
-        Vector2.Reflect(inDirection, inNormal);
-    }*/
-
 }
