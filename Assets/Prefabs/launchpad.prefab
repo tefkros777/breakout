@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 1685018657}
   - component: {fileID: 1685018651}
   - component: {fileID: 1685018652}
+  - component: {fileID: 847939073}
   m_Layer: 6
   m_Name: launchpad
-  m_TagString: Untagged
+  m_TagString: Dock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,8 +226,24 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: aa5a8f59-ce4f-4dec-bce6-688d93fcfaaa
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8746dfbb-9d0e-4abb-88b5-aa96946b0419
+    m_ActionName: Player/Launch[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &847939073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239391336256087100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9af1dc508341745a82e84004dd7bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,19 +7,22 @@ using UnityEngine.InputSystem;
 public class BallController : MonoBehaviour
 {
 
-    [SerializeField] private float speed;
-    
-    private static readonly float GRAVITY_OFF = 0;
+    [SerializeField] private float movingSpeed;
 
-    private Rigidbody2D rigidbody;
+
+    private static readonly float GRAVITY_OFF = 0;
+    private bool firstCollisionFlag = true;
+
+    private Rigidbody2D rb;
+    private Vector2 lastVelocity;
+
     private Collider2D ballCollider;
     private Collider2D dockCollider;
     private BoxCollider2D[] blockColliders;
 
-
     private void Awake()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         ballCollider = gameObject.GetComponent<CircleCollider2D>();
         dockCollider = FindObjectOfType<CapsuleCollider2D>();
         blockColliders = FindObjectsOfType<BoxCollider2D>();
@@ -27,20 +30,37 @@ public class BallController : MonoBehaviour
     
     void Update()
     {
-        
+        lastVelocity = rb.velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("COLLISION");
 
-        // Set gravity off on first collision with the dock
-        rigidbody.gravityScale = GRAVITY_OFF;
-        
-        // At the point of contact velocity is 0, that is the problem
+        // On the first collision with the dock, turn gravity off
+        if (firstCollisionFlag)
+        {
+            rb.gravityScale = GRAVITY_OFF;
+            firstCollisionFlag = false;
+        }
 
-        // Now just reflect
-        Vector2.Reflect(rigidbody.velocity, collision.GetContact(0).normal);
+        var newDirection = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
+
+        // Set new direction
+        rb.velocity = newDirection * movingSpeed;
+
+    }
+
+    private void Bounce(Rigidbody2D objectToBounce)
+    {
+        Debug.Log("TRIGGER ENTERED");
+
+        var vIn = objectToBounce.velocity;
+        vIn.y *= -1f * movingSpeed;
+        objectToBounce.velocity = vIn;
+
+        //Vector2.Reflect(rigidbody.velocity, collision.GetContact(0).normal);
+
 
     }
 }
