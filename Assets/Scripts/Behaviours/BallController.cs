@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CommandProcessor))]
 public class BallController : MonoBehaviour, IEntity
 {
 
@@ -11,15 +12,18 @@ public class BallController : MonoBehaviour, IEntity
 
     private static readonly float GRAVITY_OFF = 0;
     private bool firstCollisionFlag = true;
-    private Rigidbody2D rb;
     private Vector2 lastVelocity;
+
+    private Rigidbody2D rb;
+    private CommandProcessor mCommandProcessor;
 
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
     }
-    
+
     void Update()
     {
         lastVelocity = rb.velocity;
@@ -36,14 +40,7 @@ public class BallController : MonoBehaviour, IEntity
             firstCollisionFlag = false;
         }
 
-        Bounce(collision.contacts[0]);
-    }
-
-    private void Bounce(ContactPoint2D collisionPoint)
-    {
-        var newDirection = Vector2.Reflect(lastVelocity.normalized, collisionPoint.normal);
-        // Set new direction
-        rb.velocity = newDirection * movingSpeed;
+        mCommandProcessor.ExecuteCommand(new BounceCommand(this, lastVelocity, collision.contacts[0], movingSpeed));
     }
 
     // IEntity Properties
