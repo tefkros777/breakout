@@ -24,7 +24,7 @@ public class BallController : MonoBehaviour, IEntity
 
     private void Start()
     {
-        rb.velocity = new Vector2(0.5f, (-1f * movingSpeed));
+        mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, 1.5f, movingSpeed));
     }
 
     void Update()
