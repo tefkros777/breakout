@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1685018651}
   - component: {fileID: 1685018652}
   - component: {fileID: 847939073}
-  - component: {fileID: 847939067}
   - component: {fileID: 547077811}
+  - component: {fileID: 547077804}
   m_Layer: 6
   m_Name: launchpad
   m_TagString: Dock
@@ -232,32 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9af1dc508341745a82e84004dd7bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &847939067
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239391336256087100}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.88, y: 1.28}
-    newSize: {x: 4.88, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.88, y: 1.28}
-  m_EdgeRadius: 0
 --- !u!114 &547077811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,3 +244,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80fb4c095f7b714d850204cd9dd31c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &547077804
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239391336256087100}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 4.88, y: 1.28}
+  m_Direction: 1
