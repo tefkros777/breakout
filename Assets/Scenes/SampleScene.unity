@@ -1358,6 +1358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 315112160114380160, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 315112160114380163, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
       propertyPath: m_Name
       value: ball

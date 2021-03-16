@@ -10,8 +10,6 @@ public class BallController : MonoBehaviour, IEntity
 
     [SerializeField] private float movingSpeed;
 
-    private static readonly float GRAVITY_OFF = 0;
-    private bool firstCollisionFlag = true;
     private Vector2 lastVelocity;
 
     private Rigidbody2D rb;
@@ -24,6 +22,11 @@ public class BallController : MonoBehaviour, IEntity
         mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
     }
 
+    private void Start()
+    {
+        rb.velocity = new Vector2(0.5f, (-1f * movingSpeed));
+    }
+
     void Update()
     {
         lastVelocity = rb.velocity;
@@ -32,14 +35,6 @@ public class BallController : MonoBehaviour, IEntity
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("COLLISION");
-
-        // On the first collision with the dock, turn gravity off
-        if (firstCollisionFlag)
-        {
-            rb.gravityScale = GRAVITY_OFF;
-            firstCollisionFlag = false;
-        }
-
         mCommandProcessor.ExecuteCommand(new BounceCommand(this, Time.timeSinceLevelLoad, lastVelocity, collision.contacts[0], movingSpeed));
     }
 
