@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 7793923368987769311}
   - component: {fileID: 7793923368987769310}
   - component: {fileID: 7793923368987769297}
-  m_Layer: 0
-  m_Name: blue_block_sprite
-  m_TagString: Untagged
+  - component: {fileID: 508962884208571394}
+  - component: {fileID: 96906502}
+  m_Layer: 7
+  m_Name: standard_block
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +111,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.84, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &508962884208571394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793923368987769296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a169efe87f48a458e337463d6f3b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &96906502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793923368987769296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a169efe87f48a458e337463d6f3b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
