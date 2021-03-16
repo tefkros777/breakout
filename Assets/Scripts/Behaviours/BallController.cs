@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BallController : MonoBehaviour
+public class BallController : MonoBehaviour, IEntity
 {
 
     [SerializeField] private float movingSpeed;
@@ -44,5 +44,15 @@ public class BallController : MonoBehaviour
         var newDirection = Vector2.Reflect(lastVelocity.normalized, collisionPoint.normal);
         // Set new direction
         rb.velocity = newDirection * movingSpeed;
+    }
+
+    // IEntity Properties
+    public Vector2 GetVelocity()
+    {
+        return rb.velocity;
+    }
+    public void SetVelocity(Vector2 vel)
+    {
+        rb.velocity = vel;
     }
 }
