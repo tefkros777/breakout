@@ -40,7 +40,7 @@ public class BallController : MonoBehaviour, IEntity
             firstCollisionFlag = false;
         }
 
-        mCommandProcessor.ExecuteCommand(new BounceCommand(this, lastVelocity, collision.contacts[0], movingSpeed));
+        mCommandProcessor.ExecuteCommand(new BounceCommand(this, Time.timeSinceLevelLoad, lastVelocity, collision.contacts[0], movingSpeed));
     }
 
     // IEntity Properties

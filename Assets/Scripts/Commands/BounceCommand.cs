@@ -12,7 +12,7 @@ public class BounceCommand : Command
     // For optimization
     private Vector2 newDirection;
 
-    public BounceCommand(IEntity entity, Vector2 incomingVelocity, ContactPoint2D collisionPoint, float speed) : base (entity)
+    public BounceCommand(IEntity entity, float time, Vector2 incomingVelocity, ContactPoint2D collisionPoint, float speed) : base (entity, time)
     {
         mIncomingVelocity = incomingVelocity;
         mCollisionPoint = collisionPoint;

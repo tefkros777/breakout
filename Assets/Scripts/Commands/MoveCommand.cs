@@ -11,7 +11,7 @@ public class MoveCommand : Command
     // For optimization
     private Vector2 myVelocity;
 
-    public MoveCommand(IEntity entity, Vector2 direction, float speed) : base(entity)
+    public MoveCommand(IEntity entity, float time, Vector2 direction, float speed) : base(entity, time)
     {
         // Entity is processed by tha base class
         mDirection = direction;

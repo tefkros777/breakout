@@ -31,13 +31,13 @@ public class LaunchpadController : MonoBehaviour, IEntity
         {
             Debug.Log("MOVE STARTED");
             mPlayerInput = input.ReadValue<Vector2>();
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, mPlayerInput, speed));
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, speed));
         }
         if (input.canceled)
         {
             Debug.Log("MOVE ENDED");
             mPlayerInput = Vector2.zero; // Cancel any movement
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, mPlayerInput, speed ));
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, speed ));
         }
     }
 
