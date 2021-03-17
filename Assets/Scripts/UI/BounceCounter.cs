@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BounceCounter : MonoBehaviour
 {
+   // All this does is keep track of how many bounces happen
+
    public int NumberOfBounces { get; private set; }
 
    private void Awake()
