@@ -1254,6 +1254,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c05b6629125f94fa54f488f9baa97e, type: 3}
+--- !u!114 &1418381368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+  m_PrefabInstance: {fileID: 315112160324636190}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65902518f517e2042802b5fd66ea9ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1540917682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1525,6 +1536,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1418381368}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnFirstLaunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnFirstLaunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BallController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 210256798, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 315112160114380163, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
       propertyPath: m_Name
       value: ball
@@ -1573,6 +1616,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: sprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 57e43b6b3f13d1a4393656f05271f0d1, type: 3}
+    - target: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a534637d6a6a0b40bec0657ad7e03dd, type: 3}
+    - target: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ec65de759d881d4eaf1418ae173d90c, type: 3}
+    - target: {fileID: 8110263390388260285, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
+      propertyPath: sprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f1a1cb45a2e2a34aa4b4e2e02f1a276, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77aaddcf8df8add46ab48088c0a70f03, type: 3}
 --- !u!1001 &5144512127518683015
