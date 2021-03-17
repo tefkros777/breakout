@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CommandProcessor))]
 public class BallController : MonoBehaviour, IEntity
 {

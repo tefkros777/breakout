@@ -5,25 +5,17 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour
 {
-    private int health;
+    private static readonly int DEFAULT_HEALTH;
 
-    private void Awake()
-    {
-        health = 3;
-    }
-
-    void Update()
-    {
-        
-    }
-
-    // Code for destoying
+    // Number of hits before destroying
+    [SerializeField] private int health = DEFAULT_HEALTH;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         takeDamage();
     }
 
+    // Code for destoying
     private void takeDamage()
     {
         health--;
@@ -31,7 +23,4 @@ public class BlockController : MonoBehaviour
         if (health <= 0)
             Destroy(gameObject);
     }
-
-    // Number of lives
-
 }
