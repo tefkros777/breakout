@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
@@ -17,6 +18,7 @@ public class BallController : MonoBehaviour, IEntity
 
     private Rigidbody2D rb;
     private CommandProcessor mCommandProcessor;
+
 
     private void Awake()
     {
@@ -50,7 +52,7 @@ public class BallController : MonoBehaviour, IEntity
         }
     }
 
-    // Generates a random float between [-1.5, -0.5] and [0.5, 1.5]
+    /* Generates a random float between [-1.5, -0.5] and [0.5, 1.5] */
     private float GenerateXDirection()
     {
         float num = Random.Range(-1.5f, 1.5f);

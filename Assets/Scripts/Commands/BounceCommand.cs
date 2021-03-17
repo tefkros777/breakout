@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BounceCommand : Command
 {
     // All data that defines this command
     Vector2 mIncomingVelocity;
     ContactPoint2D mCollisionPoint;
-    float mSpeed;
+    private float mSpeed;
+
+    public static event Action OnBounce;
 
     // For optimization
     private Vector2 newDirection;
@@ -21,6 +25,7 @@ public class BounceCommand : Command
 
     public override void Execute()
     {
+        OnBounce?.Invoke();
         newDirection = Vector2.Reflect(mIncomingVelocity.normalized, mCollisionPoint.normal);
         mEntity.SetVelocity(newDirection * mSpeed);
     }
