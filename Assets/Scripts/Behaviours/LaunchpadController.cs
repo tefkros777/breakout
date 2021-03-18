@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CommandProcessor))]
 public class LaunchpadController : MonoBehaviour, IEntity
 {
-    [SerializeField] private float speed = 5.0f;
+    [SerializeField] private float standardSpeed;
+    [SerializeField] private float fastSpeed;
+    [SerializeField] private float mSpeed = 5.0f;
 
     private Rigidbody2D rb;  
     private CommandProcessor mCommandProcessor;
@@ -19,6 +21,9 @@ public class LaunchpadController : MonoBehaviour, IEntity
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
+        
+        standardSpeed = mSpeed;
+        fastSpeed= mSpeed * 2f;
     }
 
     public void OnMove(InputAction.CallbackContext input)
@@ -27,13 +32,27 @@ public class LaunchpadController : MonoBehaviour, IEntity
         {
             Debug.Log("MOVE STARTED");
             mPlayerInput = input.ReadValue<Vector2>();
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, speed));
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
         }
         if (input.canceled)
         {
             Debug.Log("MOVE ENDED");
             mPlayerInput = Vector2.zero; // Cancel any movement
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, speed ));
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed ));
+        }
+    }
+
+    public void OnAccelerate(InputAction.CallbackContext input)
+    {
+        if (input.started)
+        {
+            Debug.Log("FAST SPEED");
+            mSpeed = fastSpeed;
+        }
+        if (input.canceled)
+        {
+            Debug.Log("NORMAL SPEED");
+            mSpeed = standardSpeed;
         }
     }
 
