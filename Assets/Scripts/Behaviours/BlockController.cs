@@ -19,7 +19,6 @@ public class BlockController : MonoBehaviour
     private void takeDamage()
     {
         health--;
-
         if (health <= 0)
             Destroy(gameObject);
     }

@@ -21,11 +21,6 @@ public class LaunchpadController : MonoBehaviour, IEntity
         mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
     }
 
-    void Update()
-    {
-
-    }
-
     public void OnMove(InputAction.CallbackContext input)
     {
         if (input.started)
