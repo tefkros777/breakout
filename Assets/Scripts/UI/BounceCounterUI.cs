@@ -7,37 +7,30 @@ using TMPro;
 public class BounceCounterUI : MonoBehaviour
 {
     private TextMeshProUGUI bounceText;
-    private BounceCounter bounceCounter;
-    private int lastBounces;
+    
+    private int numBounces;
 
     private void Awake()
     {
         bounceText = FindObjectOfType<TextMeshProUGUI>();
-        bounceCounter = FindObjectOfType<BounceCounter>();
+        BounceCommand.OnBounce += AddBounce;
     }
 
     private void Start()
     {
+        numBounces = 0;
         UpdateBounceUI();
     }
 
     private void UpdateBounceUI()
     {
-        lastBounces = bounceCounter.NumberOfBounces;
-        SetText(lastBounces);
-    }
-
-    private void Update()
-    {
-        if (lastBounces != bounceCounter.NumberOfBounces)
-        {
-            UpdateBounceUI();
-        }
-    }
-
-    private void SetText(int numBounces)
-    {
         bounceText.text = numBounces.ToString();
+    }
+
+    public void AddBounce()
+    {
+        numBounces++;
+        UpdateBounceUI();
     }
 
 }
