@@ -55,11 +55,11 @@ public class BallController : MonoBehaviour, IEntity
     /* Generates a random float between [-1.5, -0.5] and [0.5, 1.5] */
     private float GenerateXDirection()
     {
-        float num = Random.Range(-1.5f, 1.5f);
-        // Discard value between -0.5 and 0.5 as they are too small to reflect on X axis
-        while (num > -0.5 && num < 0.5)
-            num = Random.Range(-1.5f, 1.5f);
-        return num;
+        // Randomly decide on the sign
+        if (Random.Range(0,3) % 2 == 0)
+            return Random.Range(0.5f, 1.5f);
+        else
+            return -1f * Random.Range(0.5f, 1.5f);
     }
 
     // IEntity Properties
