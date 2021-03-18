@@ -14,11 +14,17 @@ public class BlockController : MonoBehaviour
     [SerializeField] private int health = DEFAULT_HEALTH;
     [SerializeField] private Sprite[] sprites;
 
+    private int initialHealth;
+
+    private void Start()
+    {
+        initialHealth = health;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         TakeDamage();
-        if (health <= health / 2)
+        if (health <= (initialHealth / 2))
             SetCrackedSprite();
     }
 
@@ -33,6 +39,7 @@ public class BlockController : MonoBehaviour
     private void SetCrackedSprite()
     {
         Debug.Log("Set cracked sprite");
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[CRACKED_SPRITE_INDEX];
-    }
+        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprites[CRACKED_SPRITE_INDEX];
+    }   
 }
