@@ -6,12 +6,10 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CommandProcessor))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class BallController : MonoBehaviour, IEntity
 {
 
     [SerializeField] private float movingSpeed;
-    [SerializeField] private Sprite[] sprites;
 
     private Vector2 lastVelocity;
     private bool mFirstLaunch = true;
@@ -24,12 +22,6 @@ public class BallController : MonoBehaviour, IEntity
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
-    }
-
-    private void Start()
-    {
-        // Set random sprite
-        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
     }
 
     void Update()
