@@ -24,7 +24,7 @@ public class BallController : MonoBehaviour, IEntity
         mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         lastVelocity = rb.velocity;
     }
