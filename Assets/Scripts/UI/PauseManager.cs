@@ -13,9 +13,9 @@ public class PauseManager : MonoBehaviour
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		hidePaused();
 	}
-
+	
 	// Update is called once per frame
-	void Update()
+/*	void Update()
 	{
 
 		//uses the p button to pause and unpause the game
@@ -34,7 +34,7 @@ public class PauseManager : MonoBehaviour
 			}
 		}
 	}
-
+*/
 
 	//Reloads the Level
 	public void Reload()
@@ -46,6 +46,7 @@ public class PauseManager : MonoBehaviour
 	//controls the pausing of the scene
 	public void pauseControl()
 	{
+		Debug.Log("PAUSE");
 		if (Time.timeScale == 1)
 		{
 			Time.timeScale = 0;
