@@ -12,7 +12,7 @@ public class BounceCounterUI : MonoBehaviour
 
     private void Awake()
     {
-        bounceText = FindObjectOfType<TextMeshProUGUI>();
+        bounceText = gameObject.GetComponent<TextMeshProUGUI>();
         BounceCommand.OnBounce += AddBounce;
     }
 
