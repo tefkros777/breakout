@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,13 @@ public class MainMenuManager : MonoBehaviour
     public void ExitGame()
     {
         Debug.Log("Exit Game");
+        StartCoroutine(QuitWithTransition());
+    }
+
+    IEnumerator QuitWithTransition()
+    {
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => img.color.a == 1);
         Application.Quit();
     }
 
