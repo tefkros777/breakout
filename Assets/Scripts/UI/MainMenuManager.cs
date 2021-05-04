@@ -34,6 +34,11 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.SetString("username", username);
     }
 
+    public void LaunchLeaderboards()
+    {
+        Debug.Log("LEADERBOARDS");
+    }
+
     public void LaunchGame()
     {
         Debug.Log("Launching Level");
