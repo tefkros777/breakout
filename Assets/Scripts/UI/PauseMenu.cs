@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool IsPaused;
 
     public GameObject PauseMenuUI;
+    public Animator Anim;
+    public Image img;
 
     public void Pause()
     {
@@ -56,8 +59,8 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator LoadMainMenuAsync()
     {
-/*        Anim.SetBool("Fade", true);
-        yield return new WaitUntil(() => img.color.a == 1);*/
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => img.color.a == 1);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
 
