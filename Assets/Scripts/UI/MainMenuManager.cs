@@ -33,6 +33,7 @@ public class MainMenuManager : MonoBehaviour
     {
         Anim.SetBool("Fade", true);
         yield return new WaitUntil(() => img.color.a == 1);
+       
         #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
         #else

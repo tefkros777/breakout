@@ -2300,11 +2300,11 @@ RectTransform:
   m_Father: {fileID: 1628915003}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1001 &1319348475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2682,7 +2682,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1628915005}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -2795,14 +2795,17 @@ MonoBehaviour:
     the ball with your dock and break all the bricks to win the game
 
 
-
-    press
-    the escape key or <p> to pause the game at any time
-
+    Shold
+    down left shift to make dock move faster
 
 
-    press enter to dissmiss
-    this tutorial and start
+
+    press the escape key or <p> to
+    pause the game at any time
+
+
+
+    press space to dissmiss this tutorial and start
 
 
 '
@@ -2973,9 +2976,8 @@ GameObject:
   - component: {fileID: 1628915001}
   - component: {fileID: 1628915000}
   - component: {fileID: 1628914999}
-  - component: {fileID: 1628915005}
   - component: {fileID: 1628915004}
-  - component: {fileID: 1628915006}
+  - component: {fileID: 1628915005}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -2995,7 +2997,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c16f9d8646582c848a71eeed500ccf30, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3126,8 +3128,8 @@ MonoBehaviour:
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1628915006}
-        m_TargetAssemblyTypeName: TutorialScript, Assembly-CSharp
+      - m_Target: {fileID: 1628915005}
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: HideTutorial
         m_Mode: 1
         m_Arguments:
@@ -3143,7 +3145,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1628915005}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: PauseToggle
         m_Mode: 1
         m_Arguments:
@@ -3214,21 +3216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenuUI: {fileID: 829320040}
+  TutorialUI: {fileID: 1302765933}
   Anim: {fileID: 1628914999}
   img: {fileID: 999197896}
---- !u!114 &1628915006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628914998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0009b749ab8f04f99ac2e540668b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TutorialUI: {fileID: 1302765933}
 --- !u!114 &1637066920 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1685018651, guid: 45c05b6629125f94fa54f488f9baa97e, type: 3}
@@ -3458,7 +3448,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1628915005}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -3591,7 +3581,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1628915005}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: Level1Manager, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
@@ -4478,6 +4468,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1628915003}
     m_Modifications:
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_fontSize
+      value: 39.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: df041e9100e399845898f4a30cf85506, type: 2}
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5013171899383195741, guid: df041e9100e399845898f4a30cf85506, type: 2}
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -4508,11 +4522,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 229.3865
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 52.9385
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_LocalPosition.x

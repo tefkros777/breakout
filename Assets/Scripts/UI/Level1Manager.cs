@@ -4,13 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
+public class Level1Manager : MonoBehaviour
 {
     public static bool IsPaused;
+    public static bool TutorialActive;
 
     public GameObject PauseMenuUI;
+    public GameObject TutorialUI;
     public Animator Anim;
     public Image img;
+
+    private void Start()
+    {
+        ShowTutorial();
+    }
+
+    public void HideTutorial()
+    {
+        Debug.Log("Hiding Tutorial");
+        TutorialUI.SetActive(false);
+        Time.timeScale = 1f;
+        IsPaused = false;
+        TutorialActive = false;
+    }
+
+    void ShowTutorial()
+    {
+        Debug.Log("Showing Tutorial");
+        TutorialUI.SetActive(true);
+        Time.timeScale = 0f;
+        IsPaused = true;
+        TutorialActive = true;
+    }
 
     public void Pause()
     {
@@ -46,15 +71,18 @@ public class PauseMenu : MonoBehaviour
     public void PauseToggle()
     {
         Debug.Log("PAUSED TOGGLE");
-        
-        if (IsPaused)
-        {
-            Resume();
-        } else 
-        {
-            Pause();
-        }
 
+        if (!TutorialActive)
+        {
+            if (IsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     IEnumerator LoadMainMenuAsync()
