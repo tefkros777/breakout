@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    
+    public Animator Anim;
+    public Image img;
+
     public void LaunchGame()
     {
         Debug.Log("Launching Level");
@@ -26,9 +28,6 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitUntil(() => img.color.a == 1);
         Application.Quit();
     }
-
-    public Animator Anim;
-    public Image img;
 
     // Co-routine - Keep checking for if the scene is loaded
     IEnumerator LoadLevel1Async()

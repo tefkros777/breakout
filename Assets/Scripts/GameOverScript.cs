@@ -8,6 +8,7 @@ public class GameOverScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("End oF Scene Trigger Crossed");
+        // TODO: Show Game over scene
         QuitGame();
     }
 
