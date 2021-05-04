@@ -994,6 +994,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432330412}
   m_CullTransparentMesh: 1
+--- !u!1 &434473709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 652879642877508764, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
+  m_PrefabInstance: {fileID: 652879640897319115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461015903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,8 +1758,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 1228156819}
+  BounceCounterUI: {fileID: 434473709}
   Anim: {fileID: 1628914999}
   img: {fileID: 999197896}
+  ScoreLabel: {fileID: 577322284}
 --- !u!4 &858175814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3120271643153554536, guid: a3d1c5227f8cf2442b8991e0871700cb, type: 3}
