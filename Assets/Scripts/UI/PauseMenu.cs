@@ -1,19 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool IsPaused;
 
     public GameObject PauseMenuUI;
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void Pause()
     {
@@ -32,9 +26,17 @@ public class PauseMenu : MonoBehaviour
         IsPaused = false;
     }
 
-    public void MainMenu()
+    public void LoadMainMenu()
     {
         Debug.Log("GO BACK TO MAIN MENU");
+        Time.timeScale = 1f;
+        StartCoroutine(LoadMainMenuAsync());
+    }
+
+    public void Restart()
+    {
+        Debug.Log("RESTARTING LEVEL");
+        Time.timeScale = 1f;
 
     }
 
@@ -50,5 +52,19 @@ public class PauseMenu : MonoBehaviour
             Pause();
         }
 
+    }
+
+    IEnumerator LoadMainMenuAsync()
+    {
+/*        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => img.color.a == 1);*/
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
+
+        // If loading is not finished
+        while (!asyncLoad.isDone)
+        {
+            yield return null; // Not yet done
+        }
     }
 }
