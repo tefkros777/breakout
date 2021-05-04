@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +10,12 @@ public class MainMenuManager : MonoBehaviour
 {
     public Animator Anim;
     public Image img;
+    public TextMeshProUGUI HighscoreLabel;
+
+    private void Start()
+    {
+        HighscoreLabel.text = "HIGHSCORE: " + BounceCounter.Highscore;
+    }
 
     public void LaunchGame()
     {
