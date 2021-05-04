@@ -12,9 +12,18 @@ public class MainMenuManager : MonoBehaviour
     public Image img;
     public TextMeshProUGUI HighscoreLabel;
 
+    private string username;
+
     private void Start()
     {
         HighscoreLabel.text = "HIGHSCORE: " + BounceCounter.Highscore;
+    }
+
+    public void HandleUsernameInput(string input)
+    {
+        Debug.Log("Input finished");
+        Debug.Log(input);
+        username = input;
     }
 
     public void LaunchGame()
