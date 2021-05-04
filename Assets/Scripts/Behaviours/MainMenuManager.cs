@@ -26,7 +26,11 @@ public class MainMenuManager : MonoBehaviour
     {
         Anim.SetBool("Fade", true);
         yield return new WaitUntil(() => img.color.a == 1);
-        Application.Quit();
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
     // Co-routine - Keep checking for if the scene is loaded

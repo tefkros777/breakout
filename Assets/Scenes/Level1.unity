@@ -681,7 +681,7 @@ RectTransform:
   m_Children:
   - {fileID: 1964304915}
   m_Father: {fileID: 1228156820}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -732,9 +732,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1953489502}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
+      - m_Target: {fileID: 858175813}
+        m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
+        m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1545,7 +1545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3120271643153554535, guid: a3d1c5227f8cf2442b8991e0871700cb, type: 3}
       propertyPath: m_Name
-      value: wall_bottom
+      value: EndGameTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 3120271643153554536, guid: a3d1c5227f8cf2442b8991e0871700cb, type: 3}
       propertyPath: m_RootOrder
@@ -1619,6 +1619,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 1228156819}
+  Anim: {fileID: 1628914999}
+  img: {fileID: 999197896}
+--- !u!4 &858175814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3120271643153554536, guid: a3d1c5227f8cf2442b8991e0871700cb, type: 3}
+  m_PrefabInstance: {fileID: 858175811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &969025094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2036,8 +2043,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 133893199}
-  - {fileID: 1958094794}
   - {fileID: 315106968}
+  - {fileID: 1958094794}
   m_Father: {fileID: 2027919455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3370,7 +3377,7 @@ RectTransform:
   m_Children:
   - {fileID: 1668380457}
   m_Father: {fileID: 1228156820}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3421,9 +3428,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1953489502}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Resume
+      - m_Target: {fileID: 858175813}
+        m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3831,8 +3838,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1228156820}
-  m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_Father: {fileID: 858175814}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
