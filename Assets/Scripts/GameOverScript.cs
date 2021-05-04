@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GameOverScript : MonoBehaviour
 {
+    public GameObject GameOverUI;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("End oF Scene Trigger Crossed");
+
+        GameOverUI.SetActive(true);
+
         // TODO: Show Game over scene
-        QuitGame();
+        // QuitGame();
     }
 
     private void QuitGame()
