@@ -85,6 +85,11 @@ public class Level1Manager : MonoBehaviour
         }
     }
 
+    private void handleTextInput(string txt)
+    {
+        Debug.Log(txt);
+    }
+
     IEnumerator LoadMainMenuAsync()
     {
         Anim.SetBool("Fade", true);

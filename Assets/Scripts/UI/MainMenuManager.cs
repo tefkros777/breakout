@@ -11,19 +11,27 @@ public class MainMenuManager : MonoBehaviour
     public Animator Anim;
     public Image img;
     public TextMeshProUGUI HighscoreLabel;
+    public TMP_InputField UsernameField;
 
     private string username;
 
+    private void Awake()
+    {
+        UsernameField.onEndEdit.AddListener(handleTextInput); // For username input
+        username = UsernameField.text;
+    }
+
     private void Start()
     {
+        UsernameField.text = PlayerPrefs.GetString("username", "PLAYER1");
         HighscoreLabel.text = "HIGHSCORE: " + BounceCounter.Highscore;
     }
 
-    public void HandleUsernameInput(string input)
+    private void handleTextInput(string txt)
     {
-        Debug.Log("Input finished");
-        Debug.Log(input);
-        username = input;
+        Debug.Log(txt);
+        username = txt;
+        PlayerPrefs.SetString("username", username);
     }
 
     public void LaunchGame()
