@@ -37,6 +37,7 @@ public class MainMenuManager : MonoBehaviour
     public void LaunchLeaderboards()
     {
         Debug.Log("LEADERBOARDS");
+        StartCoroutine(LoadLeaderboardsAsync());
     }
 
     public void LaunchGame()
@@ -61,6 +62,20 @@ public class MainMenuManager : MonoBehaviour
         #else
                 Application.Quit();
         #endif
+    }
+
+    IEnumerator LoadLeaderboardsAsync()
+    {
+        Anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => img.color.a == 1);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Leaderboards");
+
+        // If loading is not finished
+        while (!asyncLoad.isDone)
+        {
+            yield return null; // Not yet done
+        }
     }
 
     // Co-routine - Keep checking for if the scene is loaded
