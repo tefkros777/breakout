@@ -10,7 +10,6 @@ public class MainMenuManager : MonoBehaviour
 {
     public Animator Anim;
     public Image img;
-    public TextMeshProUGUI HighscoreLabel;
     public TMP_InputField UsernameField;
 
     private string username;
@@ -24,7 +23,6 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         UsernameField.text = PlayerPrefs.GetString("username", "PLAYER1");
-        HighscoreLabel.text = "HIGHSCORE: " + BounceCounter.Highscore;
     }
 
     private void handleTextInput(string txt)
