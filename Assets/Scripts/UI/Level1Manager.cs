@@ -58,7 +58,7 @@ public class Level1Manager : MonoBehaviour
     public void LoadMainMenu()
     {
         Debug.Log("GO BACK TO MAIN MENU");
-        Time.timeScale = 1f;
+        // Time.timeScale = 1f;
         StartCoroutine(LoadMainMenuAsync());
     }
 
