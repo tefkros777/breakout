@@ -10,7 +10,7 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        Score[] scores = ScoreManager.GetHighscores().ToArray();
+        Score[] scores = ScoreManager.instance.GetHighscores().ToArray();
         for (int i = 0; i < scores.Length; i++)
         {
             RowUI row = Instantiate(RowUI, transform).GetComponent<RowUI>();
