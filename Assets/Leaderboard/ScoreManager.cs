@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
+    // Mono-singleton class
     public static ScoreManager instance { get; private set; }
 
     private ScoreData sd;

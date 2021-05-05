@@ -16,10 +16,12 @@ public class GameOverScript : MonoBehaviour
 
     private TextMeshProUGUI bounceCountText;
     private int mScore;
+    private string mActiveUserName;
 
     private void Awake()
     {
         bounceCountText = BounceCounterUI.GetComponent<TextMeshProUGUI>();
+        mActiveUserName = GameManager.instance.GetPlayerName();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +41,7 @@ public class GameOverScript : MonoBehaviour
 
     private void UpdateLeaderboards()
     {
-        var score = new Score("joeDoe", mScore);
+        var score = new Score(mActiveUserName, mScore);
         ScoreManager.instance.AddScore(score);
     }
 

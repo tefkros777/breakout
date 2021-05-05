@@ -22,14 +22,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        UsernameField.text = PlayerPrefs.GetString("username", "PLAYER1");
+        UsernameField.text = GameManager.instance.GetPlayerName();
     }
 
     private void handleTextInput(string txt)
     {
-        Debug.Log(txt);
-        username = txt;
-        PlayerPrefs.SetString("username", username);
+        GameManager.instance.SetPlayerName(txt);
     }
 
     public void LaunchLeaderboards()
