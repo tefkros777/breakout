@@ -50,6 +50,12 @@ public class GameOverScript : MonoBehaviour
         Debug.Log("REPLAY");
     }
 
+    public void RestartLevel()
+    {
+        Debug.Log("Restart Level");
+        StartCoroutine(ReloadSceneAsync());
+    }
+
     public void BackToMenu()
     {
         Debug.Log("BACK TO MENU");
@@ -62,6 +68,17 @@ public class GameOverScript : MonoBehaviour
         yield return new WaitUntil(() => img.color.a == 1);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
+
+        // If loading is not finished
+        while (!asyncLoad.isDone)
+        {
+            yield return null; // Not yet done
+        }
+    }
+
+    IEnumerator ReloadSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level1");
 
         // If loading is not finished
         while (!asyncLoad.isDone)
