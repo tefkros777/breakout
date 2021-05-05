@@ -9,7 +9,9 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        sd = new ScoreData();
+        // Load Highscores
+        string json = PlayerPrefs.GetString("highscores", "{}");
+        sd = JsonUtility.FromJson<ScoreData>(json);
     }
 
     // Return the scores in descending order
@@ -23,4 +25,18 @@ public class ScoreManager : MonoBehaviour
     {
         sd.scoreList.Add(score);
     }
+
+    // Save all scores to PlayerPrefs
+    public void SaveScore()
+    {
+        string json = JsonUtility.ToJson(sd);
+        PlayerPrefs.SetString("highscores", json);
+    }
+
+    // Save Highscores upon delete
+    private void OnDestroy()
+    {
+        SaveScore();
+    }
+
 }

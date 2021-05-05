@@ -10,9 +10,6 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        ScoreManager.AddScore(new Score("erdogan", 5));
-        ScoreManager.AddScore(new Score("macron", 99));
-
         Score[] scores = ScoreManager.GetHighscores().ToArray();
         for (int i = 0; i < scores.Length; i++)
         {
@@ -21,6 +18,5 @@ public class ScoreUI : MonoBehaviour
             row.Name.text = scores[i].name;
             row.Score.text = scores[i].score.ToString();
         }
-
     }
 }
