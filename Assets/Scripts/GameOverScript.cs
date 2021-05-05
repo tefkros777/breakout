@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,19 +15,34 @@ public class GameOverScript : MonoBehaviour
     public TextMeshProUGUI ScoreLabel;
 
     private TextMeshProUGUI bounceCountText;
+    private ScoreManager mScoreManager;
+    private int mScore;
 
     private void Start()
     {
         bounceCountText = BounceCounterUI.GetComponent<TextMeshProUGUI>();
+        mScoreManager = FindObjectOfType<ScoreManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("End oF Scene Trigger Crossed");
+        Debug.Log("Game Over");
+        mScore = Int32.Parse(bounceCountText.text);
+        ShowGameOverUI();
+        UpdateLeaderboards();
+    }
 
+    private void ShowGameOverUI()
+    {
         GameOverUI.SetActive(true);
         BounceCounterUI.SetActive(false);
-        ScoreLabel.text = "SCORE: " + bounceCountText.text.ToString();
+        ScoreLabel.text = "SCORE: " + mScore;
+    }
+
+    private void UpdateLeaderboards()
+    {
+        var score = new Score("joeDoe", mScore);
+        mScoreManager.AddScore(score);
     }
 
     public void Replay()

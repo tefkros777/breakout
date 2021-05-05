@@ -11,6 +11,7 @@ public class Level1Manager : MonoBehaviour
 
     public GameObject PauseMenuUI;
     public GameObject TutorialUI;
+
     public Animator Anim;
     public Image img;
 
