@@ -38,7 +38,8 @@ public class BallController : MonoBehaviour, IEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("COLLISION");
+        Debug.Log("COLLISION"); 
+        // Perhaps we dont need to store this for the replay
         mCommandProcessor.ExecuteCommand(new BounceCommand(this, Time.timeSinceLevelLoad, lastVelocity, collision.contacts[0], movingSpeed));
     }
 

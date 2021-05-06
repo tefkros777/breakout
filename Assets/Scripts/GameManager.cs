@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
     // public string ActivePlayerName { get; set; }
 
     public GameState State { get; set; }
+
+    public List<Command> ReplayCommands { get; set; }
 
     private void Awake()
     {

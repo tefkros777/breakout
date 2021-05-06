@@ -14,4 +14,10 @@ public class CommandProcessor : MonoBehaviour
         command.Execute();
         mCurrentCommandIndex = mCommands.Count - 1; // Set the index to the end of the List
     }
+
+    public List<Command> GetCommands()
+    {
+        return mCommands;
+    }
+
 }

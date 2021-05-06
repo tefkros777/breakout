@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,11 +18,13 @@ public class GameOverScript : MonoBehaviour
     private TextMeshProUGUI bounceCountText;
     private int mScore;
     private string mActiveUserName;
+    private CommandProcessor mCommandProcessor;
 
     private void Awake()
     {
         bounceCountText = BounceCounterUI.GetComponent<TextMeshProUGUI>();
         mActiveUserName = GameManager.instance.GetPlayerName();
+        mCommandProcessor = FindObjectOfType<CommandProcessor>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +53,14 @@ public class GameOverScript : MonoBehaviour
     {
         Debug.Log("REPLAY");
         // TODO: RESTART LEVEL REMEMBERING COMMAND LIST
+
+        // Save commands from this session into the game manager
+        GameManager.instance.ReplayCommands = mCommandProcessor.GetCommands();
+        GameManager.instance.State = GameState.REPLAY;
+
+        // Restart Level
+        RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE TUTORIAL
+
     }
 
     public void RestartLevel()

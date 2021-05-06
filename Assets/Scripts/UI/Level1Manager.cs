@@ -16,17 +16,31 @@ public class Level1Manager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.State = GameState.READY;
-        ShowTutorial();
+        if (GameManager.instance.State == GameState.REPLAY)
+        {
+            // Replay mode - Dont show tutorial.
+            Debug.Log("REPLAY MODE");
+        }
+        else
+        {
+            GameManager.instance.State = GameState.READY;
+            ShowTutorial();
+        }
     }
 
-    public void HideTutorial()
+    private void HideTutorial()
     {
         Debug.Log("Hiding Tutorial");
         TutorialUI.SetActive(false);
         Time.timeScale = 1f;
         GameManager.instance.State = GameState.READY;
         TutorialActive = false;
+    }
+
+    public void BeginGame()
+    {
+        HideTutorial();
+        GameManager.instance.State = GameState.PLAYING;
     }
 
     void ShowTutorial()
