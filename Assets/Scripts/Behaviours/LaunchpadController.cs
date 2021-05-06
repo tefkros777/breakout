@@ -15,11 +15,13 @@ public class LaunchpadController : MonoBehaviour, IEntity
     
     // Player input
     private Vector2 mPlayerInput;
+    private Vector2 mInitialPosition;
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         mCommandProcessor = FindObjectOfType<CommandProcessor>();
+        mInitialPosition = transform.position;
 
         if (mCommandProcessor)
         {
@@ -29,6 +31,7 @@ public class LaunchpadController : MonoBehaviour, IEntity
         {
             Debug.Log("LaunchpadController - Cannot find CommandProcessor");
         }
+        GameOverScript.ReplayRequest += Reset;
 
         standardSpeed = mSpeed;
         fastSpeed= mSpeed * 2f;
@@ -73,5 +76,11 @@ public class LaunchpadController : MonoBehaviour, IEntity
     public void SetVelocity(Vector2 vel)
     {
         rb.velocity = vel;
+    }
+    public void Reset()
+    {
+        Debug.Log("Resetting Launchpad");
+        rb.velocity = Vector2.zero;
+        transform.position = mInitialPosition;
     }
 }

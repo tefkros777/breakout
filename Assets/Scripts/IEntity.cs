@@ -9,4 +9,5 @@ public interface IEntity
     
     public Vector2 GetVelocity();
     public void SetVelocity(Vector2 vel);
+    public void Reset();
 }

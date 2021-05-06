@@ -15,6 +15,8 @@ public class GameOverScript : MonoBehaviour
     public Image img;
     public TextMeshProUGUI ScoreLabel;
 
+    public static event Action ReplayRequest;
+
     private TextMeshProUGUI bounceCountText;
     private int mScore;
     private string mActiveUserName;
@@ -57,6 +59,9 @@ public class GameOverScript : MonoBehaviour
         // Save commands from this session into the game manager
         GameManager.instance.ReplayCommands = mCommandProcessor.GetCommands();
         GameManager.instance.State = GameState.REPLAY;
+
+        // Anounce to all objects to reset
+        ReplayRequest?.Invoke();
 
         // Restart Level
         RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE TUTORIAL

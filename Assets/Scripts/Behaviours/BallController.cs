@@ -15,11 +15,12 @@ public class BallController : MonoBehaviour, IEntity
 
     private Rigidbody2D rb;
     private CommandProcessor mCommandProcessor;
-
+    private Vector2 mInitialPosition;
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        mInitialPosition = transform.position;
         mCommandProcessor = FindObjectOfType<CommandProcessor>();
         if (mCommandProcessor)
         {
@@ -29,6 +30,7 @@ public class BallController : MonoBehaviour, IEntity
         {
             Debug.Log("BallController - Cannot find CommandProcessor");
         }
+        GameOverScript.ReplayRequest += Reset;
     }
 
     void FixedUpdate()
@@ -71,5 +73,12 @@ public class BallController : MonoBehaviour, IEntity
     public void SetVelocity(Vector2 vel)
     {
         rb.velocity = vel;
+    }
+
+    public void Reset()
+    {
+        Debug.Log("Resetting Ball");
+        rb.velocity = Vector2.zero;
+        transform.position = mInitialPosition;
     }
 }
