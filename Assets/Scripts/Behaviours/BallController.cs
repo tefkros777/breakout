@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CommandProcessor))]
 public class BallController : MonoBehaviour, IEntity
 {
 
@@ -21,7 +20,15 @@ public class BallController : MonoBehaviour, IEntity
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
+        mCommandProcessor = FindObjectOfType<CommandProcessor>();
+        if (mCommandProcessor)
+        {
+            Debug.Log("BallController - CommandProcessor found");
+        }
+        else
+        {
+            Debug.Log("BallController - Cannot find CommandProcessor");
+        }
     }
 
     void FixedUpdate()

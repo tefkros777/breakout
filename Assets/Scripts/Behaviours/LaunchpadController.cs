@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CommandProcessor))]
 public class LaunchpadController : MonoBehaviour, IEntity
 {
     [SerializeField] private float standardSpeed;
@@ -20,8 +19,17 @@ public class LaunchpadController : MonoBehaviour, IEntity
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        mCommandProcessor = gameObject.GetComponent<CommandProcessor>();
-        
+        mCommandProcessor = FindObjectOfType<CommandProcessor>();
+
+        if (mCommandProcessor)
+        {
+            Debug.Log("LaunchpadController - CommandProcessor found");
+        }
+        else
+        {
+            Debug.Log("LaunchpadController - Cannot find CommandProcessor");
+        }
+
         standardSpeed = mSpeed;
         fastSpeed= mSpeed * 2f;
     }
