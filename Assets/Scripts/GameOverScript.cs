@@ -27,6 +27,7 @@ public class GameOverScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Game Over");
+        GameManager.instance.State = GameState.GAMEOVER;
         mScore = Int32.Parse(bounceCountText.text);
         ShowGameOverUI();
         UpdateLeaderboards();
@@ -48,6 +49,7 @@ public class GameOverScript : MonoBehaviour
     public void Replay()
     {
         Debug.Log("REPLAY");
+        // TODO: RESTART LEVEL REMEMBERING COMMAND LIST
     }
 
     public void RestartLevel()

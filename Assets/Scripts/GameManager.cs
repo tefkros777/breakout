@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     // public string ActivePlayerName { get; set; }
 
+    public GameState State { get; set; }
+
     private void Awake()
     {
         if (instance)

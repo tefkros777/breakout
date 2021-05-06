@@ -23,6 +23,7 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         UsernameField.text = GameManager.instance.GetPlayerName();
+        GameManager.instance.State = GameState.MAIN_MENU;
     }
 
     private void handleTextInput(string txt)

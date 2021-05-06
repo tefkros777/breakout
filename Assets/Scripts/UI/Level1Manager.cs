@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Level1Manager : MonoBehaviour
 {
-    public static bool IsPaused;
     public static bool TutorialActive;
 
     public GameObject PauseMenuUI;
@@ -17,6 +16,7 @@ public class Level1Manager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.State = GameState.READY;
         ShowTutorial();
     }
 
@@ -25,7 +25,7 @@ public class Level1Manager : MonoBehaviour
         Debug.Log("Hiding Tutorial");
         TutorialUI.SetActive(false);
         Time.timeScale = 1f;
-        IsPaused = false;
+        GameManager.instance.State = GameState.READY;
         TutorialActive = false;
     }
 
@@ -34,7 +34,7 @@ public class Level1Manager : MonoBehaviour
         Debug.Log("Showing Tutorial");
         TutorialUI.SetActive(true);
         Time.timeScale = 0f;
-        IsPaused = true;
+        GameManager.instance.State = GameState.PAUSED;
         TutorialActive = true;
     }
 
@@ -44,7 +44,7 @@ public class Level1Manager : MonoBehaviour
 
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        IsPaused = true;
+        GameManager.instance.State = GameState.PAUSED;
     }
 
     public void Resume()
@@ -52,7 +52,7 @@ public class Level1Manager : MonoBehaviour
         Debug.Log("RESUME GAME");
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        IsPaused = false;
+        GameManager.instance.State = GameState.PLAYING;
     }
 
     public void LoadMainMenu()
@@ -75,7 +75,7 @@ public class Level1Manager : MonoBehaviour
 
         if (!TutorialActive)
         {
-            if (IsPaused)
+            if (GameManager.instance.State == GameState.PAUSED)
             {
                 Resume();
             }

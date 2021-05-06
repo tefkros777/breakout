@@ -46,6 +46,7 @@ public class BallController : MonoBehaviour, IEntity
     {
         if (mFirstLaunch)
         {
+            GameManager.instance.State = GameState.PLAYING;
             mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, GenerateXDirection(), movingSpeed));
             mFirstLaunch = false;
         }
