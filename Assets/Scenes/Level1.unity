@@ -1495,6 +1495,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: standard_block (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7793923368987769296, guid: 935c2e30f547c3c4aafae9faceffa2be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7793923368987769310, guid: 935c2e30f547c3c4aafae9faceffa2be, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2206,6 +2210,10 @@ PrefabInstance:
     - target: {fileID: 7793923368987769296, guid: 935c2e30f547c3c4aafae9faceffa2be, type: 3}
       propertyPath: m_Name
       value: standard_block (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793923368987769296, guid: 935c2e30f547c3c4aafae9faceffa2be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7793923368987769310, guid: 935c2e30f547c3c4aafae9faceffa2be, type: 3}
       propertyPath: m_Sprite

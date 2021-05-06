@@ -15,10 +15,17 @@ public class BlockController : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
 
     private int initialHealth;
+    private Vector2 initialPosition;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         initialHealth = health;
+        initialPosition = transform.position;
+        
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        GameOverScript.ReplayRequest += Reset;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,16 +37,35 @@ public class BlockController : MonoBehaviour
 
     // Code for destoying
     private void TakeDamage()
-    {
+    {        
         health--;
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            // Destroy(gameObject);
+            gameObject.SetActive(false); // Just disable, dont destroy for replay purposes
+        }
     }
 
     private void SetCrackedSprite()
     {
         Debug.Log("Set cracked sprite");
-        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[CRACKED_SPRITE_INDEX];
-    }   
+    }
+
+    private void Reset()
+    {
+        Debug.Log("Resetting block"); 
+
+        // Re-enable
+        gameObject.SetActive(true);
+
+        // Reset Position
+        transform.position = initialPosition; // it never moves so perhaps we dont need it
+        
+        // Reset health
+        health = initialHealth;
+
+        // Reset sprite to healthy
+        spriteRenderer.sprite = sprites[HEALTHY_SPRITE_INDEX];
+    }
 }
