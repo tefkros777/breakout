@@ -49,8 +49,9 @@ public class GameOverScript : MonoBehaviour
             return; 
         Debug.Log("Game Over");
         ShowGameOverUI();
-        UpdateLeaderboards();
         CalculateScore();
+        if (GameManager.instance.State != GameState.REPLAY_FINISHED) 
+            UpdateLeaderboards();
         GameManager.instance.State = GameState.GAMEOVER;
     }
 
