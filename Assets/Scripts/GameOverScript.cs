@@ -15,7 +15,7 @@ public class GameOverScript : MonoBehaviour
     public Image img;
     public TextMeshProUGUI ScoreLabel;
 
-    public static event Action ReplayRequest;
+    public static event Action OnResetRequest;
 
     private TextMeshProUGUI bounceCountText;
     private int mScore;
@@ -73,7 +73,7 @@ public class GameOverScript : MonoBehaviour
         // RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE 
 
         // Anounce to all objects to reset
-        ReplayRequest?.Invoke();
+        OnResetRequest?.Invoke();
 
     }
 

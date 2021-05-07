@@ -24,6 +24,7 @@ public class MoveCommand : Command
         myVelocity = mEntity.GetVelocity();
         myVelocity.x = mDirection.x * mSpeed; //  maybe speed
         mEntity.SetVelocity(myVelocity);
+        Debug.Log($"MOVING AT {myVelocity.x}");
     }
 
     public override void Undo()

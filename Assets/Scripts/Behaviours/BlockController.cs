@@ -25,7 +25,7 @@ public class BlockController : MonoBehaviour
         
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        GameOverScript.ReplayRequest += Reset;
+        GameOverScript.OnResetRequest += Reset;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

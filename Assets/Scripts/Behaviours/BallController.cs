@@ -16,11 +16,13 @@ public class BallController : MonoBehaviour, IEntity
     private Rigidbody2D rb;
     private CommandProcessor mCommandProcessor;
     private Vector2 mInitialPosition;
+    private Quaternion mInitialRotation;
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         mInitialPosition = transform.position;
+        mInitialRotation = transform.rotation;
         mCommandProcessor = FindObjectOfType<CommandProcessor>();
         if (mCommandProcessor)
         {
@@ -30,7 +32,7 @@ public class BallController : MonoBehaviour, IEntity
         {
             Debug.Log("BallController - Cannot find CommandProcessor");
         }
-        GameOverScript.ReplayRequest += Reset;
+        GameOverScript.OnResetRequest += Reset;
     }
 
     void FixedUpdate()
@@ -41,7 +43,6 @@ public class BallController : MonoBehaviour, IEntity
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("COLLISION"); 
-        // Perhaps we dont need to store this for the replay
         mCommandProcessor.ExecuteCommand(new BounceCommand(this, Time.timeSinceLevelLoad, lastVelocity, collision.contacts[0], movingSpeed));
     }
 
@@ -81,6 +82,8 @@ public class BallController : MonoBehaviour, IEntity
     {
         Debug.Log("Resetting Ball");
         rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
         transform.position = mInitialPosition;
+        transform.rotation = mInitialRotation;
     }
 }

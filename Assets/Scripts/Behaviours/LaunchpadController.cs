@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class LaunchpadController : MonoBehaviour, IEntity
     // Player input
     private Vector2 mPlayerInput;
     private Vector2 mInitialPosition;
+    private bool isMoving;
+    private bool isReplay;
 
     private void Awake()
     {
@@ -23,33 +26,51 @@ public class LaunchpadController : MonoBehaviour, IEntity
         mCommandProcessor = FindObjectOfType<CommandProcessor>();
         mInitialPosition = transform.position;
 
-        if (mCommandProcessor)
-        {
-            Debug.Log("LaunchpadController - CommandProcessor found");
-        }
-        else
-        {
-            Debug.Log("LaunchpadController - Cannot find CommandProcessor");
-        }
-        GameOverScript.ReplayRequest += Reset;
+        if (mCommandProcessor) Debug.Log("LaunchpadController - CommandProcessor found");
+        else Debug.Log("LaunchpadController - Cannot find CommandProcessor");
+
+        GameOverScript.OnResetRequest += Reset;
+        Level1Manager.OnStageReset += Replay;
 
         standardSpeed = mSpeed;
         fastSpeed= mSpeed * 2f;
     }
 
+    private void Replay()
+    {
+        isReplay = true;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
+        }
+        else if (isReplay)
+        {
+            if ( mCommandProcessor.ReplayCommands() == false)
+            {
+                Debug.Log("Replay Finished");
+                isReplay = false;
+            }
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext input)
     {
+        mPlayerInput = input.ReadValue<Vector2>();
         if (input.started)
         {
             Debug.Log("MOVE STARTED");
-            mPlayerInput = input.ReadValue<Vector2>();
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
+            isMoving = true;
         }
         if (input.canceled)
         {
             Debug.Log("MOVE ENDED");
             mPlayerInput = Vector2.zero; // Cancel any movement
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed ));
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
+            isMoving = false;
         }
     }
 

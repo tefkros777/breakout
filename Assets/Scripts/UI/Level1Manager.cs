@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -15,6 +16,8 @@ public class Level1Manager : MonoBehaviour
     public Animator Anim;
     public Image img;
 
+    public static event Action OnStageReset;
+
     private void Start()
     {
         if (GameManager.instance.State == GameState.REPLAY)
@@ -26,21 +29,17 @@ public class Level1Manager : MonoBehaviour
             GameManager.instance.State = GameState.READY;
             ShowTutorial();
         }
-        GameOverScript.ReplayRequest += BeginReplay;
+        GameOverScript.OnResetRequest += BeginReplay;
     }
 
     private void BeginReplay()
     {
         // Replay mode - Dont show tutorial.
-        Debug.Log("REPLAY MODE");
+        Debug.Log("BEGIN REPLAY");
+
+        OnStageReset?.Invoke();
 
         // Perhaps block user input as well
-
-        // Replay all commands
-        foreach (Command cmd in GameManager.instance.ReplayCommands)
-        {
-            cmd.Execute();
-        }
     }
 
     private void HideTutorial()
