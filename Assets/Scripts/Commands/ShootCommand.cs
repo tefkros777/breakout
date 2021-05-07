@@ -17,6 +17,7 @@ public class ShootCommand : Command
     public override void Execute()
     {
         mEntity.SetVelocity(new Vector2(mDirectionX, -mDirectionY));
+        Debug.Log($"SHOOTING AT {mDirectionX}, {-mDirectionY}");
     }
 
     public override void Undo()

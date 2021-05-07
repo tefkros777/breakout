@@ -45,6 +45,12 @@ public class GameOverScript : MonoBehaviour
         ScoreLabel.text = "SCORE: " + mScore;
     }
 
+    private void HideGameOverUI()
+    {
+        GameOverUI.SetActive(false);
+        BounceCounterUI.SetActive(true);
+    }
+
     private void UpdateLeaderboards()
     {
         var score = new Score(mActiveUserName, mScore);
@@ -60,11 +66,14 @@ public class GameOverScript : MonoBehaviour
         GameManager.instance.ReplayCommands = mCommandProcessor.GetCommands();
         GameManager.instance.State = GameState.REPLAY;
 
-        // Anounce to all objects to reset
-        ReplayRequest?.Invoke();
+        // Hide Gameover menu
+        HideGameOverUI();
 
         // Restart Level
-        RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE TUTORIAL
+        // RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE 
+
+        // Anounce to all objects to reset
+        ReplayRequest?.Invoke();
 
     }
 

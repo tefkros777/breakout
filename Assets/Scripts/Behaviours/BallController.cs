@@ -50,7 +50,9 @@ public class BallController : MonoBehaviour, IEntity
         if (mFirstLaunch)
         {
             GameManager.instance.State = GameState.PLAYING;
-            mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, GenerateXDirection(), movingSpeed));
+            var rndXDirection = GenerateXDirection();
+            mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, rndXDirection, movingSpeed));
+            // Debug.Log($"SHOOTING TO DIRECTION {rndXDirection} WITH SPEED {movingSpeed}");
             mFirstLaunch = false;
         }
     }

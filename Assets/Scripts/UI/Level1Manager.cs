@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,13 +19,27 @@ public class Level1Manager : MonoBehaviour
     {
         if (GameManager.instance.State == GameState.REPLAY)
         {
-            // Replay mode - Dont show tutorial.
-            Debug.Log("REPLAY MODE");
+            Debug.Log("Calling BeginReplay() from Start method");
         }
         else
         {
             GameManager.instance.State = GameState.READY;
             ShowTutorial();
+        }
+        GameOverScript.ReplayRequest += BeginReplay;
+    }
+
+    private void BeginReplay()
+    {
+        // Replay mode - Dont show tutorial.
+        Debug.Log("REPLAY MODE");
+
+        // Perhaps block user input as well
+
+        // Replay all commands
+        foreach (Command cmd in GameManager.instance.ReplayCommands)
+        {
+            cmd.Execute();
         }
     }
 
