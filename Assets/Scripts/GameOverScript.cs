@@ -11,6 +11,7 @@ public class GameOverScript : MonoBehaviour
 {
     public GameObject GameOverUI;
     public GameObject BounceCounterUI;
+    public GameObject ReplayUI;
     public Animator Anim;
     public Image img;
     public TextMeshProUGUI ScoreLabel;
@@ -37,9 +38,10 @@ public class GameOverScript : MonoBehaviour
         if (GameManager.instance.State != GameState.REPLAY)
             UpdateLeaderboards();
         GameManager.instance.State = GameState.GAMEOVER;
-    }
+        ReplayUI.SetActive(false);
+}
 
-    private void ShowGameOverUI()
+private void ShowGameOverUI()
     {
         GameOverUI.SetActive(true);
         BounceCounterUI.SetActive(false);

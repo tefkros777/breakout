@@ -12,6 +12,7 @@ public class Level1Manager : MonoBehaviour
 
     public GameObject PauseMenuUI;
     public GameObject TutorialUI;
+    public GameObject ReplayUI;
 
     public Animator Anim;
     public Image img;
@@ -30,6 +31,7 @@ public class Level1Manager : MonoBehaviour
         // Replay mode - Dont show tutorial.
         Debug.Log("BEGIN REPLAY");
         GameManager.instance.State = GameState.REPLAY;
+        ReplayUI.SetActive(true);
         OnStageReset?.Invoke();
     }
 
