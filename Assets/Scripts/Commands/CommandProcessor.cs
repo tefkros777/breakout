@@ -12,9 +12,17 @@ public class CommandProcessor : MonoBehaviour
     public void ExecuteCommand(Command command)
     {
         // Add command to the list
-        mCommands.Add(command);
-        command.Execute();
-        mCurrentCommandIndex = mCommands.Count - 1; // Set the index to the end of the List
+        if (command is BounceCommand)
+        {
+            // Dont store bounce commands, just execute them
+            command.Execute();
+        }
+        else
+        {
+            mCommands.Add(command);
+            command.Execute();
+            mCurrentCommandIndex = mCommands.Count - 1; // Set the index to the end of the List
+        }
     }
 
     public List<Command> GetCommands()

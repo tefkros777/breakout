@@ -18,6 +18,8 @@ public class BallController : MonoBehaviour, IEntity
     private Vector2 mInitialPosition;
     private Quaternion mInitialRotation;
 
+    public static event Action OnBounce;
+
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -42,8 +44,9 @@ public class BallController : MonoBehaviour, IEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("COLLISION"); 
+        Debug.Log("COLLISION");
         mCommandProcessor.ExecuteCommand(new BounceCommand(this, Time.timeSinceLevelLoad, lastVelocity, collision.contacts[0], movingSpeed));
+        OnBounce?.Invoke();
     }
 
     public void OnFirstLaunch(InputAction.CallbackContext input)
@@ -53,7 +56,6 @@ public class BallController : MonoBehaviour, IEntity
             GameManager.instance.State = GameState.PLAYING;
             var rndXDirection = GenerateXDirection();
             mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, rndXDirection, movingSpeed));
-            // Debug.Log($"SHOOTING TO DIRECTION {rndXDirection} WITH SPEED {movingSpeed}");
             mFirstLaunch = false;
         }
     }

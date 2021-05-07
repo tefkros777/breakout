@@ -8,28 +8,16 @@ public class BounceCounter : MonoBehaviour
 
    public int NumberOfBounces { get; private set; }
 
-    public static int Highscore
-    {
-        get { return PlayerPrefs.GetInt("Highscore", 0); }
-        private set { PlayerPrefs.SetInt("Highscore", value); }
-    }
-
    private void Awake()
    {
    		NumberOfBounces = 0;
-        BounceCommand.OnBounce += AddBounce;
+        BallController.OnBounce += AddBounce;
    }
 
    public void AddBounce()
    {
-        Debug.Log("Bounce event");
+        Debug.Log("Bounce");
    		NumberOfBounces++;
-
-        if (NumberOfBounces >= Highscore)
-        {
-            Debug.Log("NEW HIGHSCORE" + NumberOfBounces);
-            Highscore = NumberOfBounces;
-        }
    }
 
 

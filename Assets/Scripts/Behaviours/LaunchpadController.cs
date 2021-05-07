@@ -43,17 +43,18 @@ public class LaunchpadController : MonoBehaviour, IEntity
 
     private void FixedUpdate()
     {
-        if (isMoving)
-        {
-            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
-        }
-        else if (isReplay)
+        if (isReplay)
         {
             if ( mCommandProcessor.ReplayCommands() == false)
             {
                 Debug.Log("Replay Finished");
                 isReplay = false;
             }
+        }
+        else
+        {
+            // Record even at stationary
+            mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
         }
     }
 

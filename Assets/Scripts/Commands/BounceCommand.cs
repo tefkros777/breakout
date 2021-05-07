@@ -11,8 +11,6 @@ public class BounceCommand : Command
     ContactPoint2D mCollisionPoint;
     private float mSpeed;
 
-    public static event Action OnBounce;
-
     // For optimization
     private Vector2 newDirection;
 
@@ -24,8 +22,7 @@ public class BounceCommand : Command
     }
 
     public override void Execute()
-    {
-        OnBounce?.Invoke();
+    { 
         newDirection = Vector2.Reflect(mIncomingVelocity.normalized, mCollisionPoint.normal);
         mEntity.SetVelocity(newDirection * mSpeed);
     }

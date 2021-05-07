@@ -13,7 +13,7 @@ public class BounceCounterUI : MonoBehaviour
     private void Awake()
     {
         bounceText = gameObject.GetComponent<TextMeshProUGUI>();
-        BounceCommand.OnBounce += AddBounce;
+        BallController.OnBounce += AddBounce;
     }
 
     private void Start()
