@@ -57,6 +57,7 @@ public class BallController : MonoBehaviour, IEntity
             var rndXDirection = GenerateXDirection();
             mCommandProcessor.ExecuteCommand(new ShootCommand(this, Time.timeSinceLevelLoad, rndXDirection, movingSpeed));
             mFirstLaunch = false;
+            GameManager.instance.State = GameState.PLAYING;
         }
     }
 

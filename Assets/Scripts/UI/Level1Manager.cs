@@ -19,16 +19,9 @@ public class Level1Manager : MonoBehaviour
     public static event Action OnStageReset;
 
     private void Start()
-    {
-        if (GameManager.instance.State == GameState.REPLAY)
-        {
-            Debug.Log("Calling BeginReplay() from Start method");
-        }
-        else
-        {
-            GameManager.instance.State = GameState.READY;
-            ShowTutorial();
-        }
+    { 
+        GameManager.instance.State = GameState.READY;
+        ShowTutorial();
         GameOverScript.OnResetRequest += BeginReplay;
     }
 
@@ -36,7 +29,7 @@ public class Level1Manager : MonoBehaviour
     {
         // Replay mode - Dont show tutorial.
         Debug.Log("BEGIN REPLAY");
-
+        GameManager.instance.State = GameState.REPLAY;
         OnStageReset?.Invoke();
 
         // Perhaps block user input as well
@@ -101,6 +94,7 @@ public class Level1Manager : MonoBehaviour
     {
         Debug.Log("PAUSED TOGGLE");
 
+        // If tutorial is shown disable pause menu
         if (!TutorialActive)
         {
             if (GameManager.instance.State == GameState.PAUSED)

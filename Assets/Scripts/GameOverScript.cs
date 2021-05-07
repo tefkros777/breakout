@@ -32,10 +32,11 @@ public class GameOverScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Game Over");
-        GameManager.instance.State = GameState.GAMEOVER;
         mScore = Int32.Parse(bounceCountText.text);
         ShowGameOverUI();
-        UpdateLeaderboards();
+        if (GameManager.instance.State != GameState.REPLAY)
+            UpdateLeaderboards();
+        GameManager.instance.State = GameState.GAMEOVER;
     }
 
     private void ShowGameOverUI()
@@ -59,15 +60,12 @@ public class GameOverScript : MonoBehaviour
 
     public void Replay()
     {
-        Debug.Log("REPLAY");
-        // TODO: RESTART LEVEL REMEMBERING COMMAND LIST
-
-        GameManager.instance.State = GameState.REPLAY;
+        Debug.Log("REPLAY BUTTON PRESSED");
 
         // Hide Gameover menu
         HideGameOverUI();
 
-        // TODO: PREVENT USER INPUT AND HIDE 
+        // TODO: PREVENT USER INPUT
 
         // Anounce to all objects to reset
         OnResetRequest?.Invoke();

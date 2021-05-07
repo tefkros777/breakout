@@ -18,7 +18,6 @@ public class LaunchpadController : MonoBehaviour, IEntity
     private Vector2 mPlayerInput;
     private Vector2 mInitialPosition;
     private bool isMoving;
-    private bool isReplay;
 
     private void Awake()
     {
@@ -38,17 +37,17 @@ public class LaunchpadController : MonoBehaviour, IEntity
 
     private void Replay()
     {
-        isReplay = true;
+        GameManager.instance.State = GameState.REPLAY;
     }
 
     private void FixedUpdate()
     {
-        if (isReplay)
+        if (GameManager.instance.State == GameState.REPLAY)
         {
             if ( mCommandProcessor.ReplayCommands() == false)
             {
                 Debug.Log("Replay Finished");
-                isReplay = false;
+                GameManager.instance.State = GameState.GAMEOVER;
             }
         }
         else
