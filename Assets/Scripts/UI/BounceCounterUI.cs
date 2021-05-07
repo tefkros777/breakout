@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class BounceCounterUI : MonoBehaviour
@@ -14,6 +15,7 @@ public class BounceCounterUI : MonoBehaviour
     {
         bounceText = gameObject.GetComponent<TextMeshProUGUI>();
         BallController.OnBounce += AddBounce;
+        GameOverScript.OnResetRequest += ResetBounces;
     }
 
     private void Start()
@@ -30,6 +32,12 @@ public class BounceCounterUI : MonoBehaviour
     public void AddBounce()
     {
         numBounces++;
+        UpdateBounceUI();
+    }
+
+    private void ResetBounces()
+    {
+        numBounces = 0;
         UpdateBounceUI();
     }
 

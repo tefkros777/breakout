@@ -62,19 +62,15 @@ public class GameOverScript : MonoBehaviour
         Debug.Log("REPLAY");
         // TODO: RESTART LEVEL REMEMBERING COMMAND LIST
 
-        // Save commands from this session into the game manager
-        GameManager.instance.ReplayCommands = mCommandProcessor.GetCommands();
         GameManager.instance.State = GameState.REPLAY;
 
         // Hide Gameover menu
         HideGameOverUI();
 
-        // Restart Level
-        // RestartLevel(); // TODO: WHEN RESTARTING FOR REPLAY, PREVENT USER INPUT AND HIDE 
+        // TODO: PREVENT USER INPUT AND HIDE 
 
         // Anounce to all objects to reset
         OnResetRequest?.Invoke();
-
     }
 
     public void RestartLevel()

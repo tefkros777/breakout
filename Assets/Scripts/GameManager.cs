@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     public GameState State { get; set; }
 
-    public List<Command> ReplayCommands { get; set; }
-
     private void Awake()
     {
         if (instance)
