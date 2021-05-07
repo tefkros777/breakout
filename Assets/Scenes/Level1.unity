@@ -5046,7 +5046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508754, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_Pivot.x
@@ -5114,11 +5114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 652879642877508755, guid: b69cce2540a9e0f4db9a65eec98659d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

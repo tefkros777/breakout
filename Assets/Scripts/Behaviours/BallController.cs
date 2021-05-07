@@ -26,14 +26,10 @@ public class BallController : MonoBehaviour, IEntity
         mInitialPosition = transform.position;
         mInitialRotation = transform.rotation;
         mCommandProcessor = FindObjectOfType<CommandProcessor>();
-        if (mCommandProcessor)
-        {
-            Debug.Log("BallController - CommandProcessor found");
-        }
-        else
-        {
-            Debug.Log("BallController - Cannot find CommandProcessor");
-        }
+        
+        if (mCommandProcessor) Debug.Log("BallController - CommandProcessor found");
+        else Debug.Log("BallController - Cannot find CommandProcessor");
+
         GameOverScript.OnResetRequest += Reset;
     }
 

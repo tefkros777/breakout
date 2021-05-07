@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     // public string ActivePlayerName { get; set; }
 
     public GameState State { get; set; }
+    public bool ShowTutorial { get; set; } = true; 
+
 
     private void Awake()
     {

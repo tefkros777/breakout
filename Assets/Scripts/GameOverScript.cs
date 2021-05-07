@@ -21,13 +21,11 @@ public class GameOverScript : MonoBehaviour
     private TextMeshProUGUI bounceCountText;
     private int mScore;
     private string mActiveUserName;
-    private CommandProcessor mCommandProcessor;
 
     private void Awake()
     {
         bounceCountText = BounceCounterUI.GetComponent<TextMeshProUGUI>();
         mActiveUserName = GameManager.instance.GetPlayerName();
-        mCommandProcessor = FindObjectOfType<CommandProcessor>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,7 +37,7 @@ public class GameOverScript : MonoBehaviour
             UpdateLeaderboards();
         GameManager.instance.State = GameState.GAMEOVER;
         ReplayUI.SetActive(false);
-}
+    }
 
 private void ShowGameOverUI()
     {
@@ -64,10 +62,7 @@ private void ShowGameOverUI()
     {
         Debug.Log("REPLAY BUTTON PRESSED");
 
-        // Hide Gameover menu
         HideGameOverUI();
-
-        // TODO: PREVENT USER INPUT
 
         // Anounce to all objects to reset
         OnResetRequest?.Invoke();

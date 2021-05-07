@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Level1Manager : MonoBehaviour
 {
-    public static bool TutorialActive;
+    // Controls Level1 loading and Pause Menu
 
     public GameObject PauseMenuUI;
     public GameObject TutorialUI;
@@ -22,7 +22,7 @@ public class Level1Manager : MonoBehaviour
     private void Start()
     { 
         GameManager.instance.State = GameState.READY;
-        ShowTutorial();
+        if (GameManager.instance.ShowTutorial) ShowTutorial();
         GameOverScript.OnResetRequest += BeginReplay;
     }
 
@@ -41,7 +41,6 @@ public class Level1Manager : MonoBehaviour
         TutorialUI.SetActive(false);
         Time.timeScale = 1f;
         GameManager.instance.State = GameState.READY;
-        TutorialActive = false;
     }
 
     public void BeginGame()
@@ -56,13 +55,12 @@ public class Level1Manager : MonoBehaviour
         TutorialUI.SetActive(true);
         Time.timeScale = 0f;
         GameManager.instance.State = GameState.PAUSED;
-        TutorialActive = true;
+        GameManager.instance.ShowTutorial = false;
     }
 
     public void Pause()
     {
         Debug.Log("PAUSED GAME");
-
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameManager.instance.State = GameState.PAUSED;
@@ -86,8 +84,8 @@ public class Level1Manager : MonoBehaviour
     public void Restart()
     {
         Debug.Log("RESTARTING LEVEL");
+        StartCoroutine(ReloadSceneAsync());
         Time.timeScale = 1f;
-
     }
 
     public void PauseToggle()
@@ -95,22 +93,10 @@ public class Level1Manager : MonoBehaviour
         Debug.Log("PAUSED TOGGLE");
 
         // If tutorial is shown disable pause menu
-        if (!TutorialActive)
-        {
-            if (GameManager.instance.State == GameState.PAUSED)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-    }
-
-    private void handleTextInput(string txt)
-    {
-        Debug.Log(txt);
+        if (TutorialUI.activeSelf) return;
+            
+        if (GameManager.instance.State == GameState.PAUSED) Resume();
+        else Pause();   
     }
 
     IEnumerator LoadMainMenuAsync()
@@ -122,8 +108,17 @@ public class Level1Manager : MonoBehaviour
 
         // If loading is not finished
         while (!asyncLoad.isDone)
-        {
             yield return null; // Not yet done
-        }
     }
+
+    IEnumerator ReloadSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level1");
+
+        // If loading is not finished
+        while (!asyncLoad.isDone )
+            yield return null; // Not yet done
+
+    }
+
 }
