@@ -59,6 +59,9 @@ public class LaunchpadController : MonoBehaviour, IEntity
 
     public void OnMove(InputAction.CallbackContext input)
     {
+        // Ignore user input on replay mode
+        if (GameManager.instance.State == GameState.REPLAY) return;
+
         mPlayerInput = input.ReadValue<Vector2>();
         if (input.started)
         {

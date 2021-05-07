@@ -31,8 +31,6 @@ public class Level1Manager : MonoBehaviour
         Debug.Log("BEGIN REPLAY");
         GameManager.instance.State = GameState.REPLAY;
         OnStageReset?.Invoke();
-
-        // Perhaps block user input as well
     }
 
     private void HideTutorial()
