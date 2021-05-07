@@ -30,7 +30,7 @@ public class Level1Manager : MonoBehaviour
     {
         // Replay mode - Dont show tutorial.
         Debug.Log("BEGIN REPLAY");
-        GameManager.instance.State = GameState.REPLAY;
+        GameManager.instance.State = GameState.REPLAY_ACTIVE;
         ReplayUI.SetActive(true);
         OnStageReset?.Invoke();
     }

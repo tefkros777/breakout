@@ -37,20 +37,23 @@ public class LaunchpadController : MonoBehaviour, IEntity
 
     private void Replay()
     {
-        GameManager.instance.State = GameState.REPLAY;
+        GameManager.instance.State = GameState.REPLAY_ACTIVE;
     }
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.State == GameState.REPLAY)
+        if (GameManager.instance.State == GameState.REPLAY_ACTIVE)
         {
-            if ( mCommandProcessor.ReplayCommands() == false)
+            var replayFinished = mCommandProcessor.ReplayCommands();
+
+            if (replayFinished)
             {
                 Debug.Log("Replay Finished");
-                GameManager.instance.State = GameState.GAMEOVER;
+                GameManager.instance.State = GameState.REPLAY_FINISHED;
             }
+            
         }
-        else
+        else if (GameManager.instance.State != GameState.GAMEOVER)
         {
             // Record even at stationary
             mCommandProcessor.ExecuteCommand(new MoveCommand(this, Time.timeSinceLevelLoad, mPlayerInput, mSpeed));
@@ -60,7 +63,7 @@ public class LaunchpadController : MonoBehaviour, IEntity
     public void OnMove(InputAction.CallbackContext input)
     {
         // Ignore user input on replay mode
-        if (GameManager.instance.State == GameState.REPLAY) return;
+        if (GameManager.instance.State == GameState.REPLAY_ACTIVE) return;
 
         mPlayerInput = input.ReadValue<Vector2>();
         if (input.started)

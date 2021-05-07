@@ -28,21 +28,41 @@ public class GameOverScript : MonoBehaviour
         mActiveUserName = GameManager.instance.GetPlayerName();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        Debug.Log("Game Over");
-        mScore = Int32.Parse(bounceCountText.text);
-        ShowGameOverUI();
-        if (GameManager.instance.State != GameState.REPLAY)
-            UpdateLeaderboards();
-        GameManager.instance.State = GameState.GAMEOVER;
-        ReplayUI.SetActive(false);
+        if (GameManager.instance.State == GameState.REPLAY_FINISHED)
+        {
+            Debug.Log("REPLAY FINISHED");
+
+            GameOver();
+        };
     }
 
-private void ShowGameOverUI()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameOver();
+    }
+
+    private void GameOver()
+    {
+        if (GameManager.instance.State == GameState.REPLAY_ACTIVE) 
+            return; 
+        Debug.Log("Game Over");
+        ShowGameOverUI();
+        UpdateLeaderboards();
+        CalculateScore();
+        GameManager.instance.State = GameState.GAMEOVER;
+    }
+
+    private void ShowGameOverUI()
     {
         GameOverUI.SetActive(true);
         BounceCounterUI.SetActive(false);
+    }
+
+    private void CalculateScore()
+    {
+        mScore = Int32.Parse(bounceCountText.text);
         ScoreLabel.text = "SCORE: " + mScore;
     }
 

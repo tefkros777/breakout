@@ -14,5 +14,6 @@ public enum GameState
     PLAYING,
     PAUSED,
     GAMEOVER,
-    REPLAY
+    REPLAY_ACTIVE,
+    REPLAY_FINISHED
 }

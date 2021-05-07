@@ -35,15 +35,17 @@ public class CommandProcessor : MonoBehaviour
         // We must execute the first command
         if (mCommands.Count > mReplayCommandIndex)
         {
+            Debug.Log($"Replaying command {mReplayCommandIndex}/{mCommands.Count-1}");
             mCommands[mReplayCommandIndex].Execute();
             mReplayCommandIndex++;
-            return true;
         }
         else
         {
+            // Replay has finished
             mReplayCommandIndex = 0;
-            return false;
+            return true;
         }
+        return false;
     }
 
 }
