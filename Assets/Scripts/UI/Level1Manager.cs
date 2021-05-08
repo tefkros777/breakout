@@ -66,6 +66,7 @@ public class Level1Manager : MonoBehaviour
         GameManager.instance.State = GameState.PAUSED;
     }
 
+    // Linked to Pause Menu Buttons
     public void Resume()
     {
         Debug.Log("RESUME GAME");
@@ -74,6 +75,7 @@ public class Level1Manager : MonoBehaviour
         GameManager.instance.State = GameState.PLAYING;
     }
 
+    // Linked to Pause Menu Buttons
     public void LoadMainMenu()
     {
         Debug.Log("GO BACK TO MAIN MENU");
@@ -81,6 +83,7 @@ public class Level1Manager : MonoBehaviour
         StartCoroutine(LoadMainMenuAsync());
     }
 
+    // Linked to Pause Menu Buttons
     public void Restart()
     {
         Debug.Log("RESTARTING LEVEL");
@@ -88,6 +91,7 @@ public class Level1Manager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    // Linked to ESC/P Buttons
     public void PauseToggle()
     {
         Debug.Log("PAUSED TOGGLE");

@@ -38,6 +38,7 @@ public class GameOverScript : MonoBehaviour
         };
     }
 
+    // When ball falls out of screen
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameOver();

@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
     public void ResetHighscores()
     {
         Debug.Log("Erasing highscores");
-        PlayerPrefs.DeleteKey("highscores");
+        PlayerPrefs.DeleteKey("leaderboards");
         LoadHighscores();
     }
 
@@ -56,7 +56,7 @@ public class ScoreManager : MonoBehaviour
     public void SaveScore()
     {
         string json = JsonUtility.ToJson(sd);
-        PlayerPrefs.SetString("highscores", json);
+        PlayerPrefs.SetString("leaderboards", json);
         Debug.Log("Saving Highscores");
     }
 
@@ -69,7 +69,7 @@ public class ScoreManager : MonoBehaviour
 
     private void LoadHighscores()
     {
-        string json = PlayerPrefs.GetString("highscores", "{}");
+        string json = PlayerPrefs.GetString("leaderboards", "{}");
         sd = JsonUtility.FromJson<ScoreData>(json);
     }
 

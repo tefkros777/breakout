@@ -31,18 +31,21 @@ public class MainMenuManager : MonoBehaviour
         GameManager.instance.SetPlayerName(txt);
     }
 
+    // Linked to button
     public void LaunchLeaderboards()
     {
         Debug.Log("LEADERBOARDS");
         StartCoroutine(LoadLeaderboardsAsync());
     }
 
+    // Linked to Play button
     public void LaunchGame()
     {
         Debug.Log("Launching Level");
         StartCoroutine(LoadLevel1Async());
     }
 
+    // Linked to exit button
     public void ExitGame()
     {
         Debug.Log("Exit Game");
@@ -92,7 +95,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        ScoreManager.instance.SaveScore();
+        // ScoreManager.instance.SaveScore();
     }
 
 }
