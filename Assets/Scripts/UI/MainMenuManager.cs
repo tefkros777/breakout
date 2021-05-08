@@ -90,4 +90,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        ScoreManager.instance.SaveScore();
+    }
+
 }

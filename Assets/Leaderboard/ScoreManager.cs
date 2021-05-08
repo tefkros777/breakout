@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -26,9 +27,16 @@ public class ScoreManager : MonoBehaviour
             Debug.Log("SCOREMANAGER INSTANCIATED");
 
             // Load Highscores
-            string json = PlayerPrefs.GetString("highscores", "{}");
-            sd = JsonUtility.FromJson<ScoreData>(json);
+            LoadHighscores();
+
         }
+    }
+
+    public void ResetHighscores()
+    {
+        Debug.Log("Erasing highscores");
+        PlayerPrefs.DeleteKey("highscores");
+        LoadHighscores();
     }
 
     // Return the scores in descending order
@@ -49,12 +57,20 @@ public class ScoreManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(sd);
         PlayerPrefs.SetString("highscores", json);
+        Debug.Log("Saving Highscores");
     }
 
     // Save Highscores upon delete
     private void OnDestroy()
     {
+        // Saved when exit button is called in main menu
         SaveScore();
+    }
+
+    private void LoadHighscores()
+    {
+        string json = PlayerPrefs.GetString("highscores", "{}");
+        sd = JsonUtility.FromJson<ScoreData>(json);
     }
 
 }
